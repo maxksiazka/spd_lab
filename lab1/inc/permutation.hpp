@@ -1,0 +1,4 @@
+#ifndef PERMUTATION_HPP_
+#define PERMUTATION_HPP_
+
+#endif /* PERMUTATION_HPP_ */
