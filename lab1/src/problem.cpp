@@ -11,9 +11,9 @@ void Problem::load_tasks_from_file(const std::string& filename) {
     infile >> num_tasks;
     this->tasks.clear();
     for (int i = 0; i < num_tasks; ++i) {
-        int rj, pj, qj;
-        infile >> rj >> pj >> qj;
-        this->tasks.push_back({i, rj, pj, qj});
+        int rj, pj, dj;
+        infile >> rj >> pj >> dj;
+        this->tasks.push_back({rj, pj, dj});
     }
     // verify that tasks are loaded correctly
     if (infile.fail()) {

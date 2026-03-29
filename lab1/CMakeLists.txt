@@ -5,14 +5,18 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON) #nie usuwaj bo zastrzelę
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(lab1)
-target_sources(lab1
-    PRIVATE
+target_sources(lab1 PRIVATE
     main.cpp
     src/permutation.cpp
     src/problem.cpp
     src/solution.cpp
     src/task.cpp
+    src/EDDsolver.cpp
 )
 target_include_directories(lab1 PRIVATE
     inc
+)
+add_custom_command(TARGET lab1 POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+    ${CMAKE_SOURCE_DIR}/test.txt ${CMAKE_BINARY_DIR}/test.txt
 )
