@@ -6,9 +6,7 @@
 class EDDSolver : public Solver {
   public:
     ~EDDSolver() override = default;
-    std::string name() const override {
-        return "EDD (Earliest Due Date)";
-    }
+    std::string name() const override;
     Solution solve(const Problem& problem) override;
 };
 #endif
