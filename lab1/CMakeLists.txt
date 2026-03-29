@@ -1,6 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 
 project(lab1)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) #nie usuwaj bo zastrzelę
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(lab1)
