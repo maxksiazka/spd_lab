@@ -10,6 +10,8 @@ target_sources(lab1 PRIVATE
     src/problem.cpp
     src/solution.cpp
     src/EDDsolver.cpp
+    src/ERDsolver.cpp
+    src/LookthroughSolver.cpp
 )
 target_include_directories(lab1 PRIVATE
     inc

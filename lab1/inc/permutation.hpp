@@ -2,6 +2,7 @@
 #define PERMUTATION_HPP_
 // permutation of the 1|rj|Lmax problem
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -47,6 +48,9 @@ class Permutation {
     }
     auto end() const {
         return sequence.end();
+    }
+    bool next_permutation() {
+        return std::next_permutation(sequence.begin(), sequence.end());
     }
 };
 

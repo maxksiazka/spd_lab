@@ -1,7 +1,7 @@
 #include "solution.hpp"
 #include <algorithm>
 
-void Solution::evaluate(const Problem& problem) {
+int32_t Solution::evaluate(const Problem& problem) {
     const auto& tasks = problem.getTasks();
     int current_time = 0;
 
@@ -21,4 +21,5 @@ void Solution::evaluate(const Problem& problem) {
             max_lateness = lateness; // aktualizuj Lmax, jeśli jest większa
         }
     }
+    return max_lateness;
 }
