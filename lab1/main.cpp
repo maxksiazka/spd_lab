@@ -1,3 +1,4 @@
+#include "LookthroughSolver.hpp"
 #include "solver.hpp"
 #include "EDDsolver.hpp"
 #include <iostream>
@@ -39,6 +40,8 @@ int main(int argc, char* argv[]) {
     }
     EDDSolver edd_solver;
     run_benchmark(&edd_solver, filename);
+    LookthroughSolver lookthrough_solver;
+    run_benchmark(&lookthrough_solver, filename);
     return 0;
 
 }

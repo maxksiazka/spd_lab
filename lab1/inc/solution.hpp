@@ -11,6 +11,6 @@ struct Solution {
     Permutation sequence; // sequence of job indices
     int max_lateness =
         std::numeric_limits<int>::min(); // maximum completion time (Lmax), inicjalizujemy na minimum
-    void evaluate(const Problem& problem);
+    int32_t evaluate(const Problem& problem);
 };
 #endif /* SOLUTION_HPP_ */

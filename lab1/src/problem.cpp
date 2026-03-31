@@ -12,7 +12,7 @@ void Problem::load_tasks_from_file(const std::string& filename) {
     this->tasks.clear();
     for (int i = 0; i < num_tasks; ++i) {
         int rj, pj, dj;
-        infile >> rj >> pj >> dj;
+        infile >> pj >> rj >> dj;
         this->tasks.push_back({rj, pj, dj});
     }
     // verify that tasks are loaded correctly
