@@ -1,8 +1,12 @@
-#include "LookthroughSolver.hpp"
 #include "solver.hpp"
-#include "EDDsolver.hpp"
 #include <iostream>
 #include <chrono>
+
+#include "EDDsolver.hpp"
+#include "LookthroughSolver.hpp"
+#include "ERDsolver.hpp"
+#include "Schragesolver.hpp"
+
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
     Problem problem;
     try {
@@ -40,8 +44,12 @@ int main(int argc, char* argv[]) {
     }
     EDDSolver edd_solver;
     run_benchmark(&edd_solver, filename);
+    ERDSolver erd_solver;
+    run_benchmark(&erd_solver, filename);
     LookthroughSolver lookthrough_solver;
     run_benchmark(&lookthrough_solver, filename);
+    SchrageSolver schrage_solver;
+    run_benchmark(&schrage_solver, filename);
     return 0;
 
 }

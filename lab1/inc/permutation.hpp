@@ -20,7 +20,7 @@ class Permutation {
     size_t size() const {
         return sequence.size();
     }
-    int operator[](int index) {
+    int &operator[](int index) {
         return sequence[index];
     }
     int operator==(const Permutation& other) const {

@@ -18,8 +18,7 @@ Solution LookthroughSolver::solve(const Problem& problem) {
     do {
         solution.max_lateness= std::numeric_limits<int32_t>::min();
         int32_t late = solution.evaluate(problem);
-        /* std::cout << "Sprawdzam permutację: " << perm << " Wynik: " << late
-                  << std::endl; */
+        //std::cout << "Sprawdzam permutację: " << perm << " Wynik: " << late << std::endl; 
         if (late < min_lateness) {
             min_lateness = late;
             min_perm = perm;
