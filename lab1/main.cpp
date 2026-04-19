@@ -1,8 +1,8 @@
 #include "solver.hpp"
 #include <iostream>
 #include <chrono>
-
 #include "EDDsolver.hpp"
+#include "PreemptSchrageSolver.hpp"
 #include "LookthroughSolver.hpp"
 #include "ERDsolver.hpp"
 #include "Schragesolver.hpp"
@@ -15,6 +15,7 @@ void run_benchmark(Solver* solver, const std::string& tasks_file) {
         std::cerr << "Error loading tasks: " << e.what() << std::endl;
         return;
     }
+    std::cout<<"==============================="<<std::endl;
     std::cout << "Running benchmark for solver: " << solver->name() << std::endl;
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     Solution solution = solver->solve(problem);
@@ -24,6 +25,7 @@ void run_benchmark(Solver* solver, const std::string& tasks_file) {
     std::cout << "Result sequence: " << solution.sequence << std::endl;
     std::cout << "Maximum lateness (Lmax): " << solution.max_lateness
               << std::endl;
+    std::cout<<"==============================="<<std::endl;
 }
 
 int main(int argc, char* argv[]) {
@@ -50,6 +52,8 @@ int main(int argc, char* argv[]) {
     run_benchmark(&lookthrough_solver, filename);
     SchrageSolver schrage_solver;
     run_benchmark(&schrage_solver, filename);
+    PreemptSchrageSolver schrage2_solver;
+    run_benchmark(&schrage2_solver, filename);
     return 0;
 
 }

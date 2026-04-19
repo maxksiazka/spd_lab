@@ -1,8 +1,5 @@
 #include "LookthroughSolver.hpp"
-#include <algorithm>
 // Implementacja przeglądu zupełnego dla 1|rj|Lmax
-// potraktuj to jako templatkę do implementacji innych algorytmów.
-// wystarczy zmienić kryterium sortowania na inny algorytm np. schrage
 std::string LookthroughSolver::name() const {
     return "Przegląd zupełny (LookthroughSolver)";
 }
@@ -10,7 +7,14 @@ Solution LookthroughSolver::solve(const Problem& problem) {
     const auto& tasks = problem.getTasks();
     Solution solution(tasks.size());
     Permutation& perm = solution.sequence;
-    // sortujemy zadania według rosnącego pożądanego czasu zakończenia (dj)
+    // populacja początkowej permutacji (kolejność zadań)
+    int min_start_time = 0;
+    for (int i = 0; i < tasks.size(); ++i) {
+        if (tasks[i].rj > min_start_time) {
+            min_start_time = tasks[i].rj; 
+        }
+        perm[i] = {i, min_start_time, tasks[i].pj}; 
+    }
 
     int32_t min_lateness = std::numeric_limits<int32_t>::max();
     Permutation min_perm = perm;
@@ -18,7 +22,9 @@ Solution LookthroughSolver::solve(const Problem& problem) {
     do {
         solution.max_lateness= std::numeric_limits<int32_t>::min();
         int32_t late = solution.evaluate(problem);
-        //std::cout << "Sprawdzam permutację: " << perm << " Wynik: " << late << std::endl; 
+#ifndef NDEBUG
+        std::cout << "Sprawdzam permutację: " << perm << " Wynik: " << late << std::endl; 
+#endif
         if (late < min_lateness) {
             min_lateness = late;
             min_perm = perm;

@@ -6,25 +6,37 @@
 #include <iostream>
 #include <vector>
 
+struct subtask {
+    int idx;
+    int start_time;
+    int processing_time;
+    subtask() =default;
+    subtask(int idx, int start_time, int processing_time)
+        : idx(idx), start_time(start_time), processing_time(processing_time) {
+    }
+    subtask(std::initializer_list<int> list) {
+        auto it = list.begin();
+        idx = *it++;
+        start_time = *it++;
+        processing_time = *it;
+    }
+};
 class Permutation {
-    std::vector<int> sequence;
+    std::vector<subtask> sequence;
 
   public:
     Permutation() = default;
     Permutation(int n) {
         sequence.resize(n);
         for (int i = 0; i < n; ++i) {
-            sequence[i] = i;
+            sequence[i].idx = i;
         }
     }
     size_t size() const {
         return sequence.size();
     }
-    int &operator[](int index) {
+    subtask& operator[](int index) {
         return sequence[index];
-    }
-    int operator==(const Permutation& other) const {
-        return sequence == other.sequence;
     }
     void operator=(const Permutation& other) {
         sequence = other.sequence;
@@ -32,9 +44,11 @@ class Permutation {
     friend std::ostream& operator<<(std::ostream& os, const Permutation& perm) {
         os << "[";
         for (int i = 0; i < perm.sequence.size(); ++i) {
-            os << perm.sequence[i] << ", ";
+            os << "(" << perm.sequence[i].idx << ", "
+               << perm.sequence[i].start_time << ", "
+               << perm.sequence[i].processing_time << ")";
         }
-        os << "]";
+        os << "]" << std::endl;
         return os;
     }
     auto begin() {
@@ -49,8 +63,13 @@ class Permutation {
     auto end() const {
         return sequence.end();
     }
+    auto push_back(const subtask& st) {
+        return sequence.push_back(st);
+    }
     bool next_permutation() {
-        return std::next_permutation(sequence.begin(), sequence.end());
+        return std::next_permutation(
+            sequence.begin(), sequence.end(),
+            [](const subtask& a, const subtask& b) { return a.idx < b.idx; });
     }
 };
 
