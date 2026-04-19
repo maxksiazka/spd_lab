@@ -14,7 +14,7 @@ target_sources(lab1 PRIVATE
     src/ERDsolver.cpp
     src/LookthroughSolver.cpp
     src/Schragesolver.cpp
-    src/Schrage2solver.cpp
+    src/PreemptSchrageSolver.cpp
 )
 target_include_directories(lab1 PRIVATE
     inc

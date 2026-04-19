@@ -10,13 +10,8 @@ Solution EDDSolver::solve(const Problem& problem) {
     const auto& tasks = problem.getTasks();
     Solution solution(tasks.size());
     Permutation& perm = solution.sequence;
-    // populacja początkowej permutacji (kolejność zadań)
-    int min_start_time = 0;
     for (int i = 0; i < tasks.size(); ++i) {
-        if (tasks[i].rj > min_start_time) {
-            min_start_time = tasks[i].rj; 
-        }
-        perm[i] = {i, min_start_time, tasks[i].pj}; 
+        perm[i] = {i, tasks[i].rj, tasks[i].pj}; 
     }
     // sortujemy zadania według rosnącego pożądanego czasu zakończenia (dj)
     std::sort(perm.begin(), perm.end(),

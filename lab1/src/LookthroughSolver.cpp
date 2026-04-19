@@ -8,12 +8,8 @@ Solution LookthroughSolver::solve(const Problem& problem) {
     Solution solution(tasks.size());
     Permutation& perm = solution.sequence;
     // populacja początkowej permutacji (kolejność zadań)
-    int min_start_time = 0;
     for (int i = 0; i < tasks.size(); ++i) {
-        if (tasks[i].rj > min_start_time) {
-            min_start_time = tasks[i].rj; 
-        }
-        perm[i] = {i, min_start_time, tasks[i].pj}; 
+        perm[i] = {i, tasks[i].rj, tasks[i].pj}; 
     }
 
     int32_t min_lateness = std::numeric_limits<int32_t>::max();
