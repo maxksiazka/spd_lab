@@ -12,9 +12,10 @@ target_sources(lab1 PRIVATE
     src/solution.cpp
     src/EDDsolver.cpp
     src/ERDsolver.cpp
-    src/LookthroughSolver.cpp
-    src/Schragesolver.cpp
+    src/LookThroughSolver.cpp
+    src/SchrageSolver.cpp
     src/PreemptSchrageSolver.cpp
+    src/ConstructionSolver.cpp
 )
 target_include_directories(lab1 PRIVATE
     inc

@@ -3,9 +3,10 @@
 #include <chrono>
 #include "EDDsolver.hpp"
 #include "PreemptSchrageSolver.hpp"
-#include "LookthroughSolver.hpp"
+#include "LookThroughSolver.hpp"
 #include "ERDsolver.hpp"
-#include "Schragesolver.hpp"
+#include "SchrageSolver.hpp"
+#include "ConstructionSolver.hpp"
 
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
     Problem problem;
@@ -46,14 +47,21 @@ int main(int argc, char* argv[]) {
     }
     EDDSolver edd_solver;
     run_benchmark(&edd_solver, filename);
+
     ERDSolver erd_solver;
     run_benchmark(&erd_solver, filename);
-    LookthroughSolver lookthrough_solver;
+
+    LookThroughSolver lookthrough_solver;
     run_benchmark(&lookthrough_solver, filename);
+
     SchrageSolver schrage_solver;
     run_benchmark(&schrage_solver, filename);
+
     PreemptSchrageSolver schrage2_solver;
     run_benchmark(&schrage2_solver, filename);
+
+    ConstructionSolver construction_solver;
+    run_benchmark(&construction_solver, filename);
     return 0;
 
 }

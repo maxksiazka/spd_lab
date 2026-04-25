@@ -1,4 +1,4 @@
-#include "Schragesolver.hpp"
+#include "SchrageSolver.hpp"
 #include <algorithm>
 #include <queue>
 // Implementacja algorytmu Schrage bez wywłaszczania (Non-preemptive)
