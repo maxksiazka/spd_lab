@@ -25,3 +25,7 @@ add_custom_command(TARGET lab1 POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy
     ${CMAKE_SOURCE_DIR}/test.txt ${CMAKE_BINARY_DIR}/test.txt
 )
+add_custom_command(TARGET lab1 POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+    ${CMAKE_SOURCE_DIR}/100_Independent0290 ${CMAKE_BINARY_DIR}/100_Independent0290
+)

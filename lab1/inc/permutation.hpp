@@ -35,6 +35,9 @@ class Permutation {
     size_t size() const {
         return sequence.size();
     }
+    const subtask& operator[](int index) const {
+        return sequence[index];
+    }
     subtask& operator[](int index) {
         return sequence[index];
     }
