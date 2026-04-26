@@ -1,10 +1,10 @@
 #include "ERDsolver.hpp"
 #include <algorithm>
-// implementacja algorytmu edd (earliest due date)
+// implementacja algorytmu ERD (earliest release date)
 // potraktuj to jako templatkę do implementacji innych algorytmów.
 // wystarczy zmienić kryterium sortowania na inny algorytm np. schrage
 std::string ERDSolver::name() const {
-    return "erd (earliest release date)";
+    return "ERD (Earliest Release Date)";
 }
 Solution ERDSolver::solve(const Problem& problem) {
     const auto& tasks = problem.getTasks();

@@ -3,9 +3,9 @@
 
 #include "solver.hpp"
 
-class LookthroughSolver : public Solver {
+class LookThroughSolver : public Solver {
   public:
-    ~LookthroughSolver() override = default;
+    ~LookThroughSolver() override = default;
     std::string name() const override;
     Solution solve(const Problem& problem) override;
 };

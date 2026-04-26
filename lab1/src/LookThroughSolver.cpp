@@ -1,9 +1,9 @@
-#include "LookthroughSolver.hpp"
+#include "LookThroughSolver.hpp"
 // Implementacja przeglądu zupełnego dla 1|rj|Lmax
-std::string LookthroughSolver::name() const {
-    return "Przegląd zupełny (LookthroughSolver)";
+std::string LookThroughSolver::name() const {
+    return "Przegląd zupełny (LookThroughSolver)";
 }
-Solution LookthroughSolver::solve(const Problem& problem) {
+Solution LookThroughSolver::solve(const Problem& problem) {
     const auto& tasks = problem.getTasks();
     Solution solution(tasks.size());
     Permutation& perm = solution.sequence;
