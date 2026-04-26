@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 project(lab1)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) #nie usuwaj bo zastrzelę
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Debug)
 
 add_executable(lab1)
 target_sources(lab1 PRIVATE
