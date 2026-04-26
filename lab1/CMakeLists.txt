@@ -16,6 +16,7 @@ target_sources(lab1 PRIVATE
     src/SchrageSolver.cpp
     src/PreemptSchrageSolver.cpp
     src/ConstructionSolver.cpp
+    src/CarlierSolver.cpp
 )
 target_include_directories(lab1 PRIVATE
     inc
