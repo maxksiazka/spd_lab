@@ -61,7 +61,7 @@ void CarlierSolver::modify_tasks(std::vector<Task>& tasks,
 }
 
 void CarlierSolver::carlier_recursive(std::vector<Task>& tasks) {
-
+    this->iteration_num++;
     Solution schrage_solution = SchrageSolver().solve(tasks);
     int32_t U = schrage_solution.max_lateness;
 #ifndef NDEBUG
@@ -131,6 +131,7 @@ Solution CarlierSolver::solve(const Problem& problem) {
     const auto& tasks = problem.getTasks();
     std::vector<Task> tasks_copy = tasks;
     carlier_recursive(tasks_copy);
+    std::cout << "Solution reached after " <<this->iteration_num << " iterations"<<std::endl;
 
     return best_solution;
 }

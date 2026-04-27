@@ -13,8 +13,13 @@ BUILD_DIR = Path("./build")
 EXECUTABLE = BUILD_DIR / "lab1"
 TASK_DIR = Path("./")
 ALGORITHMS = ["EDD", "ERD", "Schrage", "PreemptSchrage", "Construction", "Carlier"]
-TASK_FILES = [f"data/100_Independent{i:04d}" for i in range(2250)]
-OUTPUT_CSV = Path("./benchmark_results.csv")
+ALGORITHMS += ["LookThrough"] # comment to disable LookThrough
+# TASK_FILES = [f"data/100_Independent{i:04d}" for i in range(2250)]
+# TASK_FILES = [f"test_data5/task_{i}.txt" for i in range(1,51)]
+# TASK_FILES = [f"test_data7/task_{i}.txt" for i in range(1,51)]
+# TASK_FILES = [f"test_data9/task_{i}.txt" for i in range(1,51)]
+TASK_FILES = [f"test_data12/task_{i}.txt" for i in range(1,51)]
+OUTPUT_CSV = Path("./benchmark_results12.csv")
 
 def parse_output(stdout: str):
     """Extract Lmax and elapsed time from stdout."""
