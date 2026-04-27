@@ -14,7 +14,7 @@ Solution EDDSolver::solve(const Problem& problem) {
         perm[i] = {i, tasks[i].rj, tasks[i].pj}; 
     }
     // sortujemy zadania według rosnącego pożądanego czasu zakończenia (dj)
-    std::sort(perm.begin(), perm.end(),
+    std::stable_sort(perm.begin(), perm.end(),
               [&tasks](const subtask& i, const subtask& j) { return tasks[i.idx].dj < tasks[j.idx].dj; });
 
     solution.evaluate(problem);

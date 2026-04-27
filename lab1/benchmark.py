@@ -13,7 +13,7 @@ BUILD_DIR = Path("./build")
 EXECUTABLE = BUILD_DIR / "lab1"
 TASK_DIR = Path("./")
 ALGORITHMS = ["EDD", "ERD", "Schrage", "PreemptSchrage", "Construction", "Carlier"]
-TASK_FILES = [f"data2/100_Independent{i:04d}" for i in range(2250)]
+TASK_FILES = [f"data/100_Independent{i:04d}" for i in range(2250)]
 OUTPUT_CSV = Path("./benchmark_results.csv")
 
 def parse_output(stdout: str):

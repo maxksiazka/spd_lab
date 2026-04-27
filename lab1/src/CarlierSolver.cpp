@@ -108,7 +108,7 @@ void CarlierSolver::carlier_recursive(std::vector<Task>& tasks) {
     for (int32_t k = c + 1; k <= b; ++k) {
         r_K = std::min(r_K, ordered_tasks[k].rj);
         p_K += ordered_tasks[k].pj;
-        d_K = std::min(d_K, ordered_tasks[k].dj);
+        d_K = std::max(d_K, ordered_tasks[k].dj);
     }
     // c after new set
     int32_t old_rc = ordered_tasks[c].rj;
@@ -119,7 +119,7 @@ void CarlierSolver::carlier_recursive(std::vector<Task>& tasks) {
 
     // c before new set
     int32_t old_dc = ordered_tasks[c].dj;
-    ordered_tasks[c].dj = std::max(ordered_tasks[c].dj, d_K + p_K);
+    ordered_tasks[c].dj = std::min(ordered_tasks[c].dj, d_K - p_K);
     if (ordered_tasks[c].dj != old_dc)
         carlier_recursive(ordered_tasks);
     ordered_tasks[c].dj = old_dc;

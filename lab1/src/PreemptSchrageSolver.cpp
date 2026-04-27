@@ -48,22 +48,22 @@ Solution PreemptSchrageSolver::solve(const Problem& problem) {
 
         int current_task = G.top();
         G.pop();
-// #ifndef NDEBUG
-//         std::cout << "Current time: " << t
-//                   << ", executing task: " << current_task
-//                   << " (rj: " << tasks[current_task].rj
-//                   << ", pj: " << tasks[current_task].pj
-//                   << ", dj: " << tasks[current_task].dj << ")" << std::endl;
-// #endif
+#ifndef NDEBUG
+        std::cout << "Current time: " << t
+                  << ", executing task: " << current_task
+                  << " (rj: " << tasks[current_task].rj
+                  << ", pj: " << tasks[current_task].pj
+                  << ", dj: " << tasks[current_task].dj << ")" << std::endl;
+#endif
 
         int next_task = U.empty() ? std::numeric_limits<int>::max() : U.back();
         if (!U.empty() && t + tasks[current_task].pj > tasks[next_task].rj) {
             int start_time = t;
             t = tasks[next_task].rj;
-// #ifndef NDEBUG
-//             std::cout << "Adding task " << next_task << " at time " << t
-//                       << std::endl;
-// #endif
+#ifndef NDEBUG
+            std::cout << "Adding task " << next_task << " at time " << t
+                      << std::endl;
+#endif
             tasks[current_task].pj -= t - start_time;
             perm.push_back({current_task, start_time, t - start_time});
 
@@ -71,10 +71,10 @@ Solution PreemptSchrageSolver::solve(const Problem& problem) {
         } else {
             perm.push_back({current_task, t, tasks[current_task].pj});
             t += tasks[current_task].pj;
-// #ifndef NDEBUG
-//             std::cout << "Finished task " << current_task << " at time " << t
-//                       << std::endl;
-// #endif
+#ifndef NDEBUG
+            std::cout << "Finished task " << current_task << " at time " << t
+                      << std::endl;
+#endif
         }
     }
 
