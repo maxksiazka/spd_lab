@@ -18,7 +18,7 @@ Solution SchrageSolver::solve(const Problem& problem) {
         U[i] = i;
     }
     // sortowanie po rj malejaco - "stos"
-    std::sort(U.begin(), U.end(),
+    std::stable_sort(U.begin(), U.end(),
               [&tasks](int i, int j) { return tasks[i].rj > tasks[j].rj; });
 
     auto compareD = [&tasks](int i, int j) {
