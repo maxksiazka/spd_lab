@@ -113,13 +113,15 @@ void CarlierSolver::carlier_recursive(std::vector<Task>& tasks) {
     // c after new set
     int32_t old_rc = ordered_tasks[c].rj;
     ordered_tasks[c].rj = std::max(ordered_tasks[c].rj, r_K + p_K);
-    carlier_recursive(ordered_tasks);
+    if (ordered_tasks[c].rj!=old_rc)
+        carlier_recursive(ordered_tasks);
     ordered_tasks[c].rj = old_rc;
 
     // c before new set
     int32_t old_dc = ordered_tasks[c].dj;
     ordered_tasks[c].dj = std::max(ordered_tasks[c].dj, d_K + p_K);
-    carlier_recursive(ordered_tasks);
+    if (ordered_tasks[c].dj != old_dc)
+        carlier_recursive(ordered_tasks);
     ordered_tasks[c].dj = old_dc;
 }
 Solution CarlierSolver::solve(const Problem& problem) {
