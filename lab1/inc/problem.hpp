@@ -20,6 +20,15 @@ class Problem {
     const std::vector<Task>& getTasks() const {
         return tasks;
     }
+    void operator[](const std::vector<Task>& new_tasks) {
+        tasks = new_tasks;
+    }
+    Task& operator[](std::size_t index) {
+        return tasks[index];
+    }
+    Problem() = default;
+    Problem(const std::vector<Task>& tasks) : tasks(tasks) {
+    }
 };
 
 #endif /* PROBLEM_HPP_ */

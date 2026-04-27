@@ -7,6 +7,7 @@
 #include "ERDsolver.hpp"
 #include "SchrageSolver.hpp"
 #include "ConstructionSolver.hpp"
+#include "CarlierSolver.hpp"
 
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
     Problem problem;
@@ -62,6 +63,9 @@ int main(int argc, char* argv[]) {
 
     ConstructionSolver construction_solver;
     run_benchmark(&construction_solver, filename);
+
+    CarlierSolver carlier_solver;
+    run_benchmark(&carlier_solver,filename);
     return 0;
 
 }
