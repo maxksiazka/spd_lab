@@ -87,14 +87,15 @@ void CarlierSolver::carlier_recursive(std::vector<Task>& tasks) {
     }
 
     int32_t b = find_b(ordered_tasks);
-    // if b is -1, it means that all ordered_tasks are scheduled optimally,
-    // and there is no diff between the pmnt and non-pmnt solution
+
     if (b == -1) {
         return;
     }
     int32_t a = find_a(ordered_tasks, b);
     int32_t c = find_c(ordered_tasks, a, b);
     // optimal solution is found
+    // if c is -1, it means that all ordered_tasks are scheduled optimally,
+    // and there is no diff between the pmnt and non-pmnt solution
     if (c == -1) {
         return;
     }
