@@ -59,3 +59,4 @@ build
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,cmake
 /lab2/tail.dat
+/lab2/split_taylard.py
