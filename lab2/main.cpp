@@ -1,13 +1,13 @@
-#include "solver.hpp"
 #include "LookthroughSolver.hpp"
+#include "NEHSolver.hpp"
+#include "solver.hpp"
 #include <chrono>
 #include <iostream>
 typedef enum {
     LookThrough = 0,
-}Algorithm_t;
-const char *algorithm_names[] = {
-    "LookThrough"
-};
+    NEH,
+} Algorithm_t;
+const char* algorithm_names[] = {"LookThrough", "NEH"};
 
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
     Problem problem;
@@ -33,30 +33,29 @@ void run_benchmark(Solver* solver, const std::string& tasks_file) {
     std::cout << "Elapsed time: " << elapsed_seconds.count() << "s"
               << std::endl;
     std::cout << "Result sequence: " << solution.sequence << std::endl;
-    std::cout << "Makespan (Cmax): " << solution.makespan
-              << std::endl;
+    std::cout << "Makespan (Cmax): " << solution.makespan << std::endl;
     std::cout << "===============================" << std::endl;
 }
 
 int main(int argc, char* argv[]) {
     std::string filename;
     Solver* selected_solver = nullptr;
-    Algorithm_t algorithm = LookThrough; // Default algorithm
+    Algorithm_t algorithm = NEH;
     int num_algorithms = sizeof(algorithm_names) / sizeof(algorithm_names[0]);
     if (argc < 3) {
         std::cerr << "Usage: " << argv[0] << " <algorithm> <tasks_file>"
                   << std::endl;
-        std::cerr<<"Available algorithms:"<<std::endl;
+        std::cerr << "Available algorithms:" << std::endl;
         return 1;
     }
     filename = argv[2];
     if (filename.empty()) {
-        std::cerr << "Empty tasks file provided"<<std::endl;
+        std::cerr << "Empty tasks file provided" << std::endl;
         return 1;
     }
     std::string alg_str = argv[1];
     if (alg_str.empty()) {
-        std::cerr << "Empty algorithm name provided"<<std::endl;
+        std::cerr << "Empty algorithm name provided" << std::endl;
         return 1;
     }
     for (int i = 0; i < num_algorithms; ++i) {
@@ -66,27 +65,12 @@ int main(int argc, char* argv[]) {
         }
     }
     switch (algorithm) {
-    // case EDD:
-    //     selected_solver = new EDDSolver();
-    //     break;
-    // case ERD:
-    //     selected_solver = new ERDSolver();
-    //     break;
     case LookThrough:
         selected_solver = new LookthroughSolver();
         break;
-    // case Schrage:
-    //     selected_solver = new SchrageSolver();
-    //     break;
-    // case PreemptSchrage:
-    //     selected_solver = new PreemptSchrageSolver();
-    //     break;
-    // case Construction:
-    //     selected_solver = new ConstructionSolver();
-    //     break;
-    // case Carlier:
-    //     selected_solver = new CarlierSolver();
-    //     break;
+    case NEH:
+        selected_solver = new NEHSolver();
+        break;
     default:
         std::cerr << "Unknown algorithm: " << alg_str
                   << ". Available algorithms are:" << std::endl;
@@ -100,6 +84,5 @@ int main(int argc, char* argv[]) {
     }
     run_benchmark(selected_solver, filename);
     delete selected_solver;
-    //
     return 0;
 }

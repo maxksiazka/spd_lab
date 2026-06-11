@@ -25,6 +25,12 @@ class Permutation {
             sequence[i].idx = i;
         }
     }
+    Permutation(const std::vector<int>& seq) {
+        sequence.resize(seq.size());
+        for (size_t i = 0; i < seq.size(); ++i) {
+            sequence[i].idx = seq[i];
+        }
+    }
     size_t size() const {
         return sequence.size();
     }

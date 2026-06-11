@@ -11,6 +11,7 @@ target_sources(lab2 PRIVATE
     src/problem.cpp
     src/solution.cpp
     src/LookthroughSolver.cpp
+    src/NEHSolver.cpp
 )
 target_include_directories(lab2 PRIVATE
     inc
