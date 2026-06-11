@@ -20,6 +20,7 @@ void Problem::load_tasks_from_file(const std::string& filename) {
         }
         tasks.emplace_back(i, processing_times);
     }
+    set_num_machines(num_machines);
     // verify that tasks are loaded correctly
     if (infile.fail()) {
         throw std::runtime_error("Error reading tasks from file: " + filename);

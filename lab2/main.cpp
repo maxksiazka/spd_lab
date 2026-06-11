@@ -1,6 +1,13 @@
 #include "solver.hpp"
+#include "LookthroughSolver.hpp"
 #include <chrono>
 #include <iostream>
+typedef enum {
+    LookThrough = 0,
+}Algorithm_t;
+const char *algorithm_names[] = {
+    "LookThrough"
+};
 
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
     Problem problem;
@@ -34,6 +41,8 @@ void run_benchmark(Solver* solver, const std::string& tasks_file) {
 int main(int argc, char* argv[]) {
     std::string filename;
     Solver* selected_solver = nullptr;
+    Algorithm_t algorithm = LookThrough; // Default algorithm
+    int num_algorithms = sizeof(algorithm_names) / sizeof(algorithm_names[0]);
     if (argc < 3) {
         std::cerr << "Usage: " << argv[0] << " <algorithm> <tasks_file>"
                   << std::endl;
@@ -50,16 +59,22 @@ int main(int argc, char* argv[]) {
         std::cerr << "Empty algorithm name provided"<<std::endl;
         return 1;
     }
-    // switch (algorithm) {
+    for (int i = 0; i < num_algorithms; ++i) {
+        if (alg_str == algorithm_names[i]) {
+            algorithm = static_cast<Algorithm_t>(i);
+            break;
+        }
+    }
+    switch (algorithm) {
     // case EDD:
     //     selected_solver = new EDDSolver();
     //     break;
     // case ERD:
     //     selected_solver = new ERDSolver();
     //     break;
-    // case LookThrough:
-    //     selected_solver = new LookThroughSolver();
-    //     break;
+    case LookThrough:
+        selected_solver = new LookthroughSolver();
+        break;
     // case Schrage:
     //     selected_solver = new SchrageSolver();
     //     break;
@@ -72,19 +87,19 @@ int main(int argc, char* argv[]) {
     // case Carlier:
     //     selected_solver = new CarlierSolver();
     //     break;
-    // default:
-    //     std::cerr << "Unknown algorithm: " << alg_str
-    //               << ". Available algorithms are:" << std::endl;
-    //     for (int i = 0; i < num_algorithms; ++i) {
-    //         std::cerr << "  - " << algorithm_names[i] << std::endl;
-    //     }
-    //     return 1;
-    // }
-    // if (selected_solver == nullptr) {
-    //     throw std::runtime_error("Failed to create solver instance");
-    // }
+    default:
+        std::cerr << "Unknown algorithm: " << alg_str
+                  << ". Available algorithms are:" << std::endl;
+        for (int i = 0; i < num_algorithms; ++i) {
+            std::cerr << "  - " << algorithm_names[i] << std::endl;
+        }
+        return 1;
+    }
+    if (selected_solver == nullptr) {
+        throw std::runtime_error("Failed to create solver instance");
+    }
     run_benchmark(selected_solver, filename);
-    // delete selected_solver;
+    delete selected_solver;
     //
     return 0;
 }

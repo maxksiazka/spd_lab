@@ -10,6 +10,7 @@ target_sources(lab2 PRIVATE
     main.cpp
     src/problem.cpp
     src/solution.cpp
+    src/LookthroughSolver.cpp
 )
 target_include_directories(lab2 PRIVATE
     inc
