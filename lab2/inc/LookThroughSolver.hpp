@@ -3,13 +3,13 @@
 
 #include "solver.hpp"
 
-class LookthroughSolver : public Solver {
+class LookThroughSolver : public Solver {
   public:
     std::string name() const override {
         return "LookThrough";
     }
     Solution solve(const Problem& problem) override;
-    ~LookthroughSolver() override = default;
+    ~LookThroughSolver() override = default;
 };
 
 #endif // LOOKTHROUGH_SOLVER_HPP_

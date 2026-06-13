@@ -1,6 +1,6 @@
-#include "LookthroughSolver.hpp"
+#include "LookThroughSolver.hpp"
 
-Solution LookthroughSolver::solve(const Problem& problem) {
+Solution LookThroughSolver::solve(const Problem& problem) {
     int n = problem.getTasks().size();
 
     Solution best_sol(n);
