@@ -1,6 +1,7 @@
 #include "LookThroughSolver.hpp"
 #include "NEHSolver.hpp"
 #include "JohnsonFor2M.hpp"
+#include "BranchAndBound.hpp"
 #include "solver.hpp"
 #include <chrono>
 #include <iostream>
@@ -8,10 +9,11 @@
 typedef enum {
     LookThrough = 0,
     NEH,
-    JohnsonF2M
+    JohnsonF2M,
+    BB
 } Algorithm_t;
 
-const char* algorithm_names[] = {"LookThrough", "NEH", "Johnson"};
+const char* algorithm_names[] = {"LookThrough", "NEH", "Johnson", "BB"};
 
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
     Problem problem;
@@ -77,6 +79,9 @@ int main(int argc, char* argv[]) {
         break;
     case JohnsonF2M:
         selected_solver = new JohnsonFor2M();
+        break;
+    case BB:
+        selected_solver = new BranchAndBound();
         break;
     default:
         std::cerr << "Unknown algorithm: " << alg_str

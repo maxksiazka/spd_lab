@@ -38,9 +38,11 @@ Solution NEHSolver::solve(const Problem& problem) {
         // we try to insert the current job at every possible position in the
         // current sequence and keep track of the best makespan and the
         // corresponding index
+#ifndef NDEBUG
         std::cout << "Inserting job " << jobs[i].idx
                   << " with total processing time "
                   << jobs[i].total_processing_time << std::endl;
+#endif
         for (int current_index = 0; current_index <= i; ++current_index) {
             current_sequence.insert(current_sequence.begin() + current_index, jobs[i].idx);
             // if size 0, then the only place we can insert is at index 0, if
@@ -48,11 +50,13 @@ Solution NEHSolver::solve(const Problem& problem) {
             // can insert at index 0, 1, or 2, and so on
             Solution current_solution(current_sequence);
             current_solution.evaluate(problem);
+#ifndef NDEBUG
             std::cout << "Current sequence: ";
             for (const auto& st : current_solution.sequence) {
                 std::cout << st.idx << " ";
             }
             std::cout << "Makespan: " << current_solution.makespan << std::endl;
+#endif
             if (current_solution.makespan <= best_makespan) {
                 best_makespan = current_solution.makespan;
                 best_index = current_index;
