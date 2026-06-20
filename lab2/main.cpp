@@ -1,5 +1,6 @@
 #include "LookThroughSolver.hpp"
 #include "NEHSolver.hpp"
+#include "FNEHSolver.hpp"
 #include "JohnsonFor2M.hpp"
 #include "BranchAndBound.hpp"
 #include "solver.hpp"
@@ -10,10 +11,11 @@ typedef enum {
     LookThrough = 0,
     NEH,
     JohnsonF2M,
-    BB
+    BB,
+    FNEH
 } Algorithm_t;
 
-const char* algorithm_names[] = {"LookThrough", "NEH", "Johnson", "BB"};
+const char* algorithm_names[] = {"LookThrough", "NEH", "Johnson", "BB", "FNEH"};
 
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
     Problem problem;
@@ -44,7 +46,7 @@ void run_benchmark(Solver* solver, const std::string& tasks_file) {
 }
 
 int main(int argc, char* argv[]) {
-    std::string filename;
+    std::string filename = "../taillard_instances/tail_000.dat";
     Solver* selected_solver = nullptr;
     Algorithm_t algorithm = NEH;
     int num_algorithms = sizeof(algorithm_names) / sizeof(algorithm_names[0]);
@@ -82,6 +84,9 @@ int main(int argc, char* argv[]) {
         break;
     case BB:
         selected_solver = new BranchAndBound();
+        break;
+    case FNEH:
+        selected_solver = new FNEHSolver();
         break;
     default:
         std::cerr << "Unknown algorithm: " << alg_str

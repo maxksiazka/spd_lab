@@ -25,9 +25,11 @@ Solution NEHSolver::solve(const Problem& problem) {
                job.total_processing_time < std::numeric_limits<int>::max() &&
                job.idx < n);
     });
-    // non-decreasing order of total processing time
     std::sort(jobs.begin(), jobs.end(), [](const Job& a, const Job& b) {
-        return a.total_processing_time <= b.total_processing_time;
+        if (a.total_processing_time != b.total_processing_time) {
+            return a.total_processing_time > b.total_processing_time;
+        }
+        return a.idx < b.idx;
     });
     std::vector<int> best_sequence;
     best_sequence.reserve(n);
@@ -44,7 +46,8 @@ Solution NEHSolver::solve(const Problem& problem) {
                   << jobs[i].total_processing_time << std::endl;
 #endif
         for (int current_index = 0; current_index <= i; ++current_index) {
-            current_sequence.insert(current_sequence.begin() + current_index, jobs[i].idx);
+            current_sequence.insert(current_sequence.begin() + current_index,
+                                    jobs[i].idx);
             // if size 0, then the only place we can insert is at index 0, if
             // size 1, then we can insert at index 0 or 1, if size 2, then we
             // can insert at index 0, 1, or 2, and so on
@@ -57,7 +60,7 @@ Solution NEHSolver::solve(const Problem& problem) {
             }
             std::cout << "Makespan: " << current_solution.makespan << std::endl;
 #endif
-            if (current_solution.makespan <= best_makespan) {
+            if (current_solution.makespan < best_makespan) {
                 best_makespan = current_solution.makespan;
                 best_index = current_index;
             }

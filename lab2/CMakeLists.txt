@@ -13,6 +13,7 @@ add_executable(lab2
     src/NEHSolver.cpp
     src/JohnsonFor2M.cpp
     src/BranchAndBound.cpp
+    src/FNEHSolver.cpp
 )
 target_include_directories(lab2 PRIVATE
     inc
