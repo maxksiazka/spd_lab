@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME}
     src/solution.cpp
     src/LSASolver.cpp
     src/LPTSolver.cpp
+    src/DynamicSolver.cpp
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
     inc
