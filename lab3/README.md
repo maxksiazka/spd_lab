@@ -1,12 +1,11 @@
-# SPD_LAB2
+# SPD_LAB3
 
-## Problem FP||Cmax
+## Problem Pm||Cmax
 ### Opis implementacji
-W tej implementacji rozwiązujemy problem szeregowania zadań na wielu maszynach, gdzie każde zadanie ma określony czas przetwarzania i termin, a celem jest zminimalizowanie czasu wykonywania wszystkich zadań (Cmax).
-Kolejność wykonywania zadań jest reprezentowana przez permutację, która określa, w jakiej kolejności zadania będą przetwarzane.
+W tej implementacji rozwiązujemy problem szeregowania zadań na identycznych, równoległych maszynach, aby zminimalizować maksymalny czas zakończenia wszystkich zadań (Cmax).
 
-Klasa `Task` reprezentuje pojedyncze zadanie, zawierając informacje o czasach przetwarzania dla każdej maszyny.
-Klasa `Permutacja` jest wrapperem na strukturę danych, która zawiera czas przetwarzania i czasy startu dla każdej maszyny.
+Klasa `Task` reprezentuje pojedyncze zadanie, zawierając informacje o czasie przetwarzania i terminie.
+Klasa `Permutacja` jest prostym wrapperem na wektor intów, który przydział do konkretnej maszyny -- job_to_machine[i] = j oznacza, że zadanie i jest przypisane do maszyny j.
 Klasa `Problem` zawiera wektor zadań oraz funkcję do ładowania danych z pliku.
 Klasa `Solution` reprezentuje rozwiązanie problemu, zawierając permutację zadań oraz obliczaną dla danej permutacji wartość funkcji celu (Cmax).
 Klasa `Solver` jest klasą bazową dla różnych algorytmów rozwiązujących problem, a konkretne algorytmy dziedziczą po niej i implementują metodę `solve`.

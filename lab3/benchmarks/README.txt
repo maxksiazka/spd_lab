@@ -1,0 +1,12 @@
+pm_10_2.txt: 10 jobs, theoretical lower bound ~238
+pm_20_2.txt: 20 jobs, theoretical lower bound ~554
+pm_50_2.txt: 50 jobs, theoretical lower bound ~1278
+pm_20_5.txt: 20 jobs, theoretical lower bound ~267
+pm_50_5.txt: 50 jobs, theoretical lower bound ~539
+pm_100_5.txt: 100 jobs, theoretical lower bound ~1085
+pm_50_10.txt: 50 jobs, theoretical lower bound ~249
+pm_100_10.txt: 100 jobs, theoretical lower bound ~547
+pm_200_10.txt: 200 jobs, theoretical lower bound ~1107
+pm_100_20.txt: 100 jobs, theoretical lower bound ~291
+pm_500_20.txt: 500 jobs, theoretical lower bound ~1409
+pm_1000_20.txt: 1000 jobs, theoretical lower bound ~2788
