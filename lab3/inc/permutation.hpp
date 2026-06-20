@@ -6,7 +6,7 @@
 
 class Permutation {
   private:
-      // job_to_machine[i] = j --  means job i is assigned to machine j
+    // job_to_machine[i] = j --  means job i is assigned to machine j
     std::vector<int> job_to_machine;
 
   public:
@@ -49,7 +49,18 @@ class Permutation {
     auto end() const {
         return job_to_machine.end();
     }
-    bool next_permutation() {}
+    bool next_permutation(int num_machines) {
+        int n = job_to_machine.size();
+        for (int i = n - 1; i > 0; --i) {
+            if (job_to_machine[i] + 1 < num_machines) {
+                job_to_machine[i]++;
+                return true;
+            } else {
+                job_to_machine[i] = 0;
+            }
+        }
+        return false;
+    }
 };
 
 #endif /* PERMUTATION_HPP_ */
