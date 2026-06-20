@@ -1,5 +1,6 @@
-#include "LSASolver.hpp"
+#include "DynamicSolver.hpp"
 #include "LPTSolver.hpp"
+#include "LSASolver.hpp"
 #include "solver.hpp"
 #include <chrono>
 #include <iostream>
@@ -7,13 +8,13 @@
 typedef enum {
     LSA = 0,
     LPT,
-    PD,
+    Dynamic,
     LookThrough,
     PTAS,
     FPTAS
 } Algorithm_t;
 
-const char* algorithm_names[] = {"LSA",         "LPT",  "PD",
+const char* algorithm_names[] = {"LSA",         "LPT",  "Dynamic",
                                  "LookThrough", "PTAS", "FPTAS"};
 
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
@@ -97,12 +98,12 @@ int main(int argc, char* argv[]) {
     case LSA:
         selected_solver = new LSASolver();
         break;
-        case LPT:
-            selected_solver = new LPTSolver();
-            break;
-        // case PD:
-        //     selected_solver = new PDSolver();
-        //     break;
+    case LPT:
+        selected_solver = new LPTSolver();
+        break;
+    case Dynamic:
+        selected_solver = new DynamicSolver();
+        break;
         // case LookThrough:
         //     selected_solver = new LookThroughSolver();
         //     break;
