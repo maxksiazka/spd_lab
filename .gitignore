@@ -60,3 +60,5 @@ build
 # End of https://www.toptal.com/developers/gitignore/api/c++,cmake
 /lab2/tail.dat
 /lab2/split_taylard.py
+/lab2/two_machine_benchmark.py
+/lab2/instance_generator.py
