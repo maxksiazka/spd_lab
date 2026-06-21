@@ -1,6 +1,10 @@
 #include "DynamicSolver.hpp"
 #include "LPTSolver.hpp"
 #include "LSASolver.hpp"
+#include "PTASSolver.hpp"
+#include "BranchAndBoundSolver.hpp"
+#include "LookThroughSolver.hpp"
+#include "FPTASSolver.hpp"
 #include "solver.hpp"
 #include <chrono>
 #include <iostream>
@@ -11,11 +15,12 @@ typedef enum {
     Dynamic,
     LookThrough,
     PTAS,
-    FPTAS
+    FPTAS,
+    BB
 } Algorithm_t;
 
 const char* algorithm_names[] = {"LSA",         "LPT",  "Dynamic",
-                                 "LookThrough", "PTAS", "FPTAS"};
+                                 "LookThrough", "PTAS", "FPTAS", "BB"};
 
 void run_benchmark(Solver* solver, const std::string& tasks_file) {
     Problem problem;
@@ -104,15 +109,18 @@ int main(int argc, char* argv[]) {
     case Dynamic:
         selected_solver = new DynamicSolver();
         break;
-        // case LookThrough:
-        //     selected_solver = new LookThroughSolver();
-        //     break;
-        // case PTAS:
-        //     selected_solver = new PTASSolver();
-        //     break;
-        // case FPTAS:
-        //     selected_solver = new FPTASSolver();
-        //     break;
+        case LookThrough:
+            selected_solver = new LookThroughSolver();
+            break;
+        case PTAS:
+            selected_solver = new PTASSolver();
+            break;
+        case FPTAS:
+            selected_solver = new FPTASSolver();
+            break;
+        case BB:
+            selected_solver = new BranchAndBoundSolver();
+            break;
     default:
         std::cerr << "Unknown algorithm: " << alg_str
                   << ". Available algorithms are:" << std::endl;
