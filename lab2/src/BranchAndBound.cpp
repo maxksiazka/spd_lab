@@ -3,7 +3,7 @@
 #include <numeric>
 #include <cmath>
 #include <limits>
-#include "NEHSolver.hpp"
+#include "FNEHSolver.hpp"
 
 Solution BranchAndBound::solve(const Problem& problem)
 {
@@ -13,7 +13,7 @@ Solution BranchAndBound::solve(const Problem& problem)
 
     if (n == 0) return Solution(0);
 
-    NEHSolver neh;
+    FNEHSolver neh;
     Solution neh_solution=neh.solve(problem);
 
     int best_cmax = neh_solution.makespan;

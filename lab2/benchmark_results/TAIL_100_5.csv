@@ -1,0 +1,11 @@
+Index,Task,NEH_Lmax,NEH_time,FNEH_Lmax,FNEH_time
+0,taillard_instances/tail_061.dat,5519,18.4379,5519,0.311265
+1,taillard_instances/tail_062.dat,5348,19.4496,5348,0.32108499999999995
+2,taillard_instances/tail_063.dat,5219,18.3328,5219,0.315195
+3,taillard_instances/tail_064.dat,5023,18.9682,5023,0.307433
+4,taillard_instances/tail_065.dat,5266,18.951099999999997,5266,0.309829
+5,taillard_instances/tail_066.dat,5139,18.784200000000002,5139,0.32350199999999996
+6,taillard_instances/tail_067.dat,5259,18.9513,5259,0.322716
+7,taillard_instances/tail_068.dat,5120,19.2621,5120,0.321677
+8,taillard_instances/tail_069.dat,5489,19.212699999999998,5489,0.33509399999999995
+9,taillard_instances/tail_070.dat,5341,19.1414,5341,0.32905
