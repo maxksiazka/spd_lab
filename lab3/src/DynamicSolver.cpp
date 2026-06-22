@@ -50,6 +50,9 @@ Solution DynamicSolver::solve(const Problem& problem) {
     // backtrack
     int k = cols - 1;
     int j = rows - 1;
+    
+    while (k>0 && T[j][k]==0) --k;
+
     for (; j > 0; --j) {
         if (T[j][k] == 1 && T[j - 1][k] == 0) {
             // task j correlates to j-1 in task list
