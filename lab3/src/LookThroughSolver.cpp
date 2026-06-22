@@ -15,7 +15,7 @@ Solution LookThroughSolver::solve(const Problem& problem)
         VectorI current_loads(m, 0);
         
         for (int i = 0; i < n; ++i) {
-            current_loads[current_sol.sequence[i]] += tasks[i].processing_time;
+            current_loads[current_sol.sequence[tasks[i].idx]] += tasks[i].processing_time;
         }
 
         int current_makespan = *std::max_element(current_loads.begin(), current_loads.end());
@@ -26,6 +26,8 @@ Solution LookThroughSolver::solve(const Problem& problem)
         }
 
     } while (current_sol.sequence.next_permutation(m));
+
+    best_sol.evaluate(problem);
 
     return best_sol;
 }

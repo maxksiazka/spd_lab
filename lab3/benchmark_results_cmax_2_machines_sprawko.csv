@@ -1,0 +1,3 @@
+Index,Task,LSA_Cmax,LSA_time,LPT_Cmax,LPT_time,Dynamic_Cmax,Dynamic_time,LookThrough_Cmax,LookThrough_time
+0,benchmarks2M2/pm_10_2_inst_01.txt,246,0.000717,245,0.0017770000000000002,239,0.015113999999999999,239,0.035233
+1,benchmarks2M2/pm_20_2_inst_01.txt,575,0.000951,554,0.0027089999999999996,554,0.036419,554,26.990199999999998

@@ -51,7 +51,7 @@ class Permutation {
     }
     bool next_permutation(int num_machines) {
         int n = job_to_machine.size();
-        for (int i = n - 1; i > 0; --i) {
+        for (int i = n - 1; i >= 0; --i) {
             if (job_to_machine[i] + 1 < num_machines) {
                 job_to_machine[i]++;
                 return true;

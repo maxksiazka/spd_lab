@@ -1,7 +1,7 @@
 import os
 import random
 
-def generate_pm_cmax_benchmark(n_jobs, n_machines, instance_no, min_p=10, max_p=100, folder="benchmarks2M"):
+def generate_pm_cmax_benchmark(n_jobs, n_machines, instance_no, min_p=10, max_p=100, folder="benchmarks2M2"):
     """
     Generates a single Pm||Cmax benchmark instance.
     """
@@ -30,6 +30,6 @@ if __name__ == "__main__":
     print("Generating Pm||Cmax benchmark suite...")
     for m, n_list in test_configs.items():
         for n in n_list:
-            for inst in range(1, 21):
+            for inst in range(1, 2):
                 generate_pm_cmax_benchmark(n_jobs=n, n_machines=m, instance_no=inst)
     print("\nDone! Benchmarks saved to the specified directory.")

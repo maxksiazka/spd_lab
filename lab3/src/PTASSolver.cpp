@@ -46,10 +46,11 @@ void PTASSolver::LookThroughForK(
 
 Solution PTASSolver::solve(const Problem& problem)
 {
-    const int k=12;
 
     const int n = problem.getTasks().size();
     const int m = problem.get_num_machines();
+
+    const int k=2;
 
     const std::vector<Task>& tasks = problem.getTasks();
     std::vector<Task> tasks_copy = tasks;

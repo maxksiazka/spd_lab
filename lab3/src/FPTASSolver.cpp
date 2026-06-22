@@ -14,7 +14,7 @@ Solution FPTASSolver::solve(const Problem& problem)
 
     Solution solution(n);
 
-    double K = 3;
+    double K = 4;
 
     VectorI scaled_p(n);
     long long scaled_sum = 0;
