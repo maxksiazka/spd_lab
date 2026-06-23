@@ -14,11 +14,11 @@ TASK_DIR = Path("./")
 #ALGORITHMS = ["LSA", "LPT", "Dynamic"]
 #ALGORITHMS+=["LookThrough"]
 
-ALGORITHMS = ["PTAS", "FPTAS", "Dynamic"]
+ALGORITHMS = ["FPTAS", "Dynamic"]
 
 TASK_FILES = [
     f"benchmarks2M2/pm_{i}_2_inst_{inst:02d}.txt" 
-    for i in [10, 20, 50]#, 100, 200, 500, 1000] 
+    for i in [10, 20, 50, 100, 200, 500, 1000] 
     for inst in range(1, 2)
 ]
 OUTPUT_CSV = Path("./benchmark_results_cmax_2_machines_sprawko_PTAS.csv")
